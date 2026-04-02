@@ -9,6 +9,8 @@ namespace LoginScreen
 
         private void txtUserId_Enter(object sender, EventArgs e)
         {
+            lblErrorMessage.Visible = false; // 에러 메시지 숨기기
+
             if (txtUserId.Text == "아이디") // 현재 플레이스홀더인지 확인
             {
                 txtUserId.Text = ""; // 안내문 제거
@@ -29,6 +31,8 @@ namespace LoginScreen
         {
             if (txtPassword.Text == "비밀번호") // 현재 플레이스홀더인지 확인
             {
+                lblErrorMessage.Visible = false; // 에러 메시지 숨기기
+
                 txtPassword.Text = ""; // 안내문 제거
                 txtPassword.ForeColor = Color.Black; // 입력 글자색 검정으로 변경
                 txtPassword.UseSystemPasswordChar = true; // 비밀번호 가리기 시작
@@ -52,11 +56,12 @@ namespace LoginScreen
 
             if (userId == "human" && password == "1234") // 둘 다 맞는지 확인
             {
+                lblErrorMessage.Visible = false; // 에러 메시지 숨기기
                 MessageBox.Show("로그인 성공"); // 성공 메시지 박스 출력
             }
             else // 하나라도 틀리면
             {
-                MessageBox.Show("로그인 실패"); // 실패 메시지 박스 출력
+                lblErrorMessage.Visible = true; // 에러 메시지 보이기
             }
         }
 

@@ -32,11 +32,12 @@
             lblTitle = new Label();
             txtUserId = new TextBox();
             txtPassword = new TextBox();
+            lblErrorMessage = new Label();
             SuspendLayout();
             // 
             // btnLogin
             // 
-            btnLogin.BackColor = Color.Tomato;
+            btnLogin.BackColor = SystemColors.ActiveCaption;
             btnLogin.Font = new Font("맑은 고딕", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 129);
             btnLogin.ForeColor = Color.White;
             btnLogin.Location = new Point(230, 297);
@@ -51,7 +52,7 @@
             // 
             lblTitle.AutoSize = true;
             lblTitle.Font = new Font("맑은 고딕", 24F, FontStyle.Bold, GraphicsUnit.Point, 129);
-            lblTitle.ForeColor = Color.Snow;
+            lblTitle.ForeColor = Color.DimGray;
             lblTitle.Location = new Point(230, 50);
             lblTitle.Name = "lblTitle";
             lblTitle.Size = new Size(128, 54);
@@ -80,12 +81,24 @@
             txtPassword.Enter += txtPassword_Enter;
             txtPassword.Leave += txtPassword_Leave;
             // 
+            // lblErrorMessage
+            // 
+            lblErrorMessage.AutoSize = true;
+            lblErrorMessage.ForeColor = Color.Red;
+            lblErrorMessage.Location = new Point(158, 236);
+            lblErrorMessage.Name = "lblErrorMessage";
+            lblErrorMessage.Size = new Size(302, 20);
+            lblErrorMessage.TabIndex = 4;
+            lblErrorMessage.Text = "아이디 또는 비밀번호가 올바르지 않습니다.";
+            lblErrorMessage.Visible = false;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(9F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.LightCoral;
+            BackColor = Color.WhiteSmoke;
             ClientSize = new Size(591, 450);
+            Controls.Add(lblErrorMessage);
             Controls.Add(txtPassword);
             Controls.Add(txtUserId);
             Controls.Add(lblTitle);
@@ -104,5 +117,6 @@
         private Label lblTitle;
         private TextBox txtUserId;
         private TextBox txtPassword;
+        private Label lblErrorMessage;
     }
 }
