@@ -40,7 +40,7 @@
             btnLogin.BackColor = SystemColors.ActiveCaption;
             btnLogin.Font = new Font("맑은 고딕", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 129);
             btnLogin.ForeColor = Color.White;
-            btnLogin.Location = new Point(230, 297);
+            btnLogin.Location = new Point(216, 297);
             btnLogin.Name = "btnLogin";
             btnLogin.Size = new Size(159, 49);
             btnLogin.TabIndex = 0;
@@ -53,7 +53,7 @@
             lblTitle.AutoSize = true;
             lblTitle.Font = new Font("맑은 고딕", 24F, FontStyle.Bold, GraphicsUnit.Point, 129);
             lblTitle.ForeColor = Color.DimGray;
-            lblTitle.Location = new Point(230, 50);
+            lblTitle.Location = new Point(231, 50);
             lblTitle.Name = "lblTitle";
             lblTitle.Size = new Size(128, 54);
             lblTitle.TabIndex = 1;
@@ -61,10 +61,12 @@
             // 
             // txtUserId
             // 
+            txtUserId.Font = new Font("맑은 고딕", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 129);
             txtUserId.ForeColor = Color.Gray;
-            txtUserId.Location = new Point(230, 142);
+            txtUserId.Location = new Point(197, 122);
+            txtUserId.Multiline = true;
             txtUserId.Name = "txtUserId";
-            txtUserId.Size = new Size(159, 27);
+            txtUserId.Size = new Size(194, 40);
             txtUserId.TabIndex = 2;
             txtUserId.Text = "아이디";
             txtUserId.Enter += txtUserId_Enter;
@@ -72,10 +74,12 @@
             // 
             // txtPassword
             // 
+            txtPassword.Font = new Font("맑은 고딕", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 129);
             txtPassword.ForeColor = Color.Gray;
-            txtPassword.Location = new Point(230, 206);
+            txtPassword.Location = new Point(197, 193);
+            txtPassword.Multiline = true;
             txtPassword.Name = "txtPassword";
-            txtPassword.Size = new Size(159, 27);
+            txtPassword.Size = new Size(197, 40);
             txtPassword.TabIndex = 3;
             txtPassword.Text = "비밀번호";
             txtPassword.Enter += txtPassword_Enter;
@@ -85,7 +89,7 @@
             // 
             lblErrorMessage.AutoSize = true;
             lblErrorMessage.ForeColor = Color.Red;
-            lblErrorMessage.Location = new Point(158, 236);
+            lblErrorMessage.Location = new Point(144, 236);
             lblErrorMessage.Name = "lblErrorMessage";
             lblErrorMessage.Size = new Size(302, 20);
             lblErrorMessage.TabIndex = 4;
