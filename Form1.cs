@@ -22,7 +22,7 @@ namespace LoginScreen
             }
             else
             {
-                lblErrorMsg.Visible = true; // 에러 메시지 출력
+                lblErrorMsg.Visible = true;// 에러 메시지 보이기
                 // 실패 메시지 출력
                 MessageBox.Show("로그인 실패", "로그인", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 
