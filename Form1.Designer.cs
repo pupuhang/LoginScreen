@@ -33,6 +33,8 @@
             txtID = new TextBox();
             txtPW = new TextBox();
             lblErrorMsg = new Label();
+            btnClearAll = new Button();
+            chkShowPW = new CheckBox();
             SuspendLayout();
             // 
             // btnLogin
@@ -40,7 +42,7 @@
             btnLogin.BackColor = SystemColors.ActiveCaption;
             btnLogin.Font = new Font("맑은 고딕", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 129);
             btnLogin.ForeColor = Color.White;
-            btnLogin.Location = new Point(200, 332);
+            btnLogin.Location = new Point(157, 332);
             btnLogin.Name = "btnLogin";
             btnLogin.Size = new Size(190, 62);
             btnLogin.TabIndex = 0;
@@ -53,7 +55,7 @@
             lblAppName.AutoSize = true;
             lblAppName.Font = new Font("맑은 고딕", 24F, FontStyle.Bold, GraphicsUnit.Point, 129);
             lblAppName.ForeColor = Color.DimGray;
-            lblAppName.Location = new Point(231, 50);
+            lblAppName.Location = new Point(188, 50);
             lblAppName.Name = "lblAppName";
             lblAppName.Size = new Size(128, 54);
             lblAppName.TabIndex = 1;
@@ -63,9 +65,9 @@
             // 
             txtID.Font = new Font("맑은 고딕", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 129);
             txtID.ForeColor = Color.Silver;
-            txtID.Location = new Point(197, 122);
+            txtID.Location = new Point(110, 122);
             txtID.Name = "txtID";
-            txtID.Size = new Size(194, 38);
+            txtID.Size = new Size(285, 38);
             txtID.TabIndex = 2;
             txtID.Text = "아이디";
             txtID.Enter += txtID_Enter;
@@ -76,9 +78,9 @@
             // 
             txtPW.Font = new Font("맑은 고딕", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 129);
             txtPW.ForeColor = Color.Silver;
-            txtPW.Location = new Point(197, 193);
+            txtPW.Location = new Point(110, 193);
             txtPW.Name = "txtPW";
-            txtPW.Size = new Size(197, 38);
+            txtPW.Size = new Size(285, 38);
             txtPW.TabIndex = 3;
             txtPW.Text = "패스워드";
             txtPW.Enter += txtPW_Enter;
@@ -89,19 +91,43 @@
             // 
             lblErrorMsg.AutoSize = true;
             lblErrorMsg.ForeColor = Color.Red;
-            lblErrorMsg.Location = new Point(144, 236);
+            lblErrorMsg.Location = new Point(101, 236);
             lblErrorMsg.Name = "lblErrorMsg";
             lblErrorMsg.Size = new Size(302, 20);
             lblErrorMsg.TabIndex = 4;
             lblErrorMsg.Text = "아이디 또는 비밀번호가 올바르지 않습니다.";
             lblErrorMsg.Visible = false;
             // 
+            // btnClearAll
+            // 
+            btnClearAll.Location = new Point(110, 271);
+            btnClearAll.Name = "btnClearAll";
+            btnClearAll.Size = new Size(103, 29);
+            btnClearAll.TabIndex = 6;
+            btnClearAll.Text = "전체 지우기";
+            btnClearAll.UseVisualStyleBackColor = true;
+            btnClearAll.Click += btnClearAll_Click;
+            // 
+            // chkShowPW
+            // 
+            chkShowPW.AutoSize = true;
+            chkShowPW.Font = new Font("맑은 고딕", 7.8F, FontStyle.Regular, GraphicsUnit.Point, 129);
+            chkShowPW.Location = new Point(400, 202);
+            chkShowPW.Name = "chkShowPW";
+            chkShowPW.Size = new Size(113, 21);
+            chkShowPW.TabIndex = 7;
+            chkShowPW.Text = "비밀번호 표시";
+            chkShowPW.UseVisualStyleBackColor = true;
+            chkShowPW.CheckedChanged += chkShowPW_CheckedChanged;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(9F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.WhiteSmoke;
-            ClientSize = new Size(591, 450);
+            ClientSize = new Size(505, 450);
+            Controls.Add(chkShowPW);
+            Controls.Add(btnClearAll);
             Controls.Add(lblErrorMsg);
             Controls.Add(txtPW);
             Controls.Add(txtID);
@@ -121,5 +147,7 @@
         private TextBox txtID;
         private TextBox txtPW;
         private Label lblErrorMsg;
+        private Button btnClearAll;
+        private CheckBox chkShowPW;
     }
 }

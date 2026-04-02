@@ -25,7 +25,7 @@ namespace LoginScreen
                 lblErrorMsg.Visible = true;// 에러 메시지 보이기
                 // 실패 메시지 출력
                 MessageBox.Show("로그인 실패", "로그인", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                
+
             }
         }
 
@@ -64,7 +64,7 @@ namespace LoginScreen
                 txtPW.Text = ""; // 안내문 제거
                 txtPW.UseSystemPasswordChar = true; // 비밀번호 가리기 시작
                 txtPW.ForeColor = Color.Black; // 입력 글자색 검정으로 변경
-                
+
             }
         }
 
@@ -95,6 +95,32 @@ namespace LoginScreen
                 e.SuppressKeyPress = true; // 기본비프음방지
                 btnLogin.PerformClick(); // 버튼이눌린것처럼만들기
             }
+        }
+
+        private void btnClearAll_Click(object sender, EventArgs e)
+        {
+            txtPW.UseSystemPasswordChar = false; // 비밀번호창 마스킹 해제
+
+            txtID.Text = "아이디"; // 아이디 플레이스홀더 복원
+            txtPW.Text = "패스워드"; // 비밀번호 플레이스홀더 복원
+
+            txtID.ForeColor = Color.Silver; // 아이디 안내문 색 복원
+            txtPW.ForeColor = Color.Silver; // 비밀번호 안내문 색 복원
+
+            lblErrorMsg.Visible = false; // 에러 메시지 숨기기
+            chkShowPW.Checked = false; // 체크박스 해제
+            txtID.Focus(); // 커서를 아이디 입력창으로 이동
+        }
+
+        private void chkShowPW_CheckedChanged(object sender, EventArgs e)
+        {
+            if (txtPW.Text == "패스워드") // 아직 플레이스홀더 상태면
+            {
+                txtPW.UseSystemPasswordChar = false; // 안내문이 보이도록 유지
+                return; // 여기서 종료
+            }
+
+            txtPW.UseSystemPasswordChar = !chkShowPW.Checked; // 체크하면 보이고, 해제하면 가림
         }
     }
 }
