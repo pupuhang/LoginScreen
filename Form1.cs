@@ -6,70 +6,94 @@ namespace LoginScreen
         {
             InitializeComponent();
         }
-
-        private void txtUserId_Enter(object sender, EventArgs e)
-        {
-            lblErrorMessage.Visible = false; // 에러 메시지 숨기기
-
-            if (txtUserId.Text == "아이디") // 현재 플레이스홀더인지 확인
-            {
-                txtUserId.Text = ""; // 안내문 제거
-                txtUserId.ForeColor = Color.Black; // 입력 글자색 검정으로 변경
-            }
-        }
-
-        private void txtUserId_Leave(object sender, EventArgs e)
-        {
-            if (txtUserId.Text == "") // 아무것도 입력하지 않았으면
-            {
-                txtUserId.Text = "아이디"; // 다시 플레이스홀더 표시
-                txtUserId.ForeColor = Color.Gray; // 안내문 색 회색으로 변경
-            }
-        }
-
-        private void txtPassword_Enter(object sender, EventArgs e)
-        {
-            if (txtPassword.Text == "비밀번호") // 현재 플레이스홀더인지 확인
-            {
-                lblErrorMessage.Visible = false; // 에러 메시지 숨기기
-
-                txtPassword.Text = ""; // 안내문 제거
-                txtPassword.ForeColor = Color.Black; // 입력 글자색 검정으로 변경
-                txtPassword.UseSystemPasswordChar = true; // 비밀번호 가리기 시작
-            }
-        }
-
-        private void txtPassword_Leave(object sender, EventArgs e)
-        {
-            if (txtPassword.Text == "") // 아무것도 입력하지 않았으면
-            {
-                txtPassword.UseSystemPasswordChar = false; // 플레이스홀더 보이게 마스킹 해제
-                txtPassword.Text = "비밀번호"; // 다시 플레이스홀더 표시
-                txtPassword.ForeColor = Color.Gray; // 안내문 색 회색으로 변경
-            }
-        }
+        // 로그인에 사용할 아이디와 비밀번호
+        string myID = "human";
+        string myPW = "1234";
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            string userId = txtUserId.Text; // 아이디 값 저장
-            string password = txtPassword.Text; // 비밀번호 값 저장
+            string inputID = txtID.Text; // 아이디 값 저장
+            string inputPW = txtPW.Text; // 비밀번호 값 저장
 
-            if (userId == "human" && password == "1234") // 둘 다 맞는지 확인
+            if (inputID == myID && inputPW == myPW) // 둘 다 맞는지 확인
             {
-                lblErrorMessage.Visible = false; // 에러 메시지 숨기기
-                MessageBox.Show("로그인 성공"); // 성공 메시지 박스 출력
+                lblErrorMsg.Visible = false; // 에러 메시지 숨기기
+                MessageBox.Show("로그인 성공", "로그인", MessageBoxButtons.OK); // 성공 메시지 박스 출력
             }
-            else // 하나라도 틀리면
+            else
             {
-                lblErrorMessage.Visible = true; // 에러 메시지 보이기
+                lblErrorMsg.Visible = true; // 에러 메시지 출력
+                // 실패 메시지 출력
+                MessageBox.Show("로그인 실패", "로그인", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                
             }
         }
 
-        private void Form1_KeyDown(object sender, KeyEventArgs e)
+        private void txtID_Enter(object sender, EventArgs e)
         {
-            if (e.KeyCode == Keys.Enter) // Enter 키 눌렀을 때
+            // 에러 메시지 숨기기
+            lblErrorMsg.Visible = false;
+            // 현재 플레이스홀더인지 확인
+            if (txtID.Text == "아이디")
             {
-                btnLogin_Click(sender, e); // 로그인 버튼 클릭 이벤트 실행
+                // 안내문 제거
+                txtID.Text = "";
+                // 입력 글자색 검정으로 변경
+                txtID.ForeColor = Color.Black;
+            }
+        }
+
+        private void txtID_Leave(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtID.Text))
+            {
+                // 다시 플레이스홀더 표시
+                txtID.Text = "아이디";
+                // 안내문 색 변경
+                txtID.ForeColor = Color.Silver;
+            }
+        }
+
+        private void txtPW_Enter(object sender, EventArgs e)
+        {
+            // 현재 플레이스홀더인지 확인
+            if (txtPW.Text == "패스워드")
+            {
+                // 에러 메시지 숨기기
+                lblErrorMsg.Visible = false;
+                txtPW.Text = ""; // 안내문 제거
+                txtPW.UseSystemPasswordChar = true; // 비밀번호 가리기 시작
+                txtPW.ForeColor = Color.Black; // 입력 글자색 검정으로 변경
+                
+            }
+        }
+
+        private void txtPW_Leave(object sender, EventArgs e)
+        {
+            if (txtPW.Text == "") // 아무것도 입력하지 않았으면
+            {
+                txtPW.UseSystemPasswordChar = false; // 플레이스홀더 보이게 마스킹 해제
+                txtPW.Text = "패스워드"; // 다시 플레이스홀더 표시
+                txtPW.ForeColor = Color.Silver; // 안내문 색 변경
+            }
+        }
+
+        private void txtID_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                e.SuppressKeyPress = true; // 기본비프음방지
+                txtPW.Focus(); // 패스워드입력창이포커스를갖게끔
+            }
+        }
+
+
+        private void txtPW_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                e.SuppressKeyPress = true; // 기본비프음방지
+                btnLogin.PerformClick(); // 버튼이눌린것처럼만들기
             }
         }
     }
